@@ -20,11 +20,11 @@ export class TaskService implements ITaskService {
         return this.taskRepository.show(id)
     }
 
-    async updateTaskById(id: string, task: Partial<Task>): Promise<Task | null> {
+    async updateTaskById(id: number, task: Partial<Task>): Promise<Task | null> {
         return this.taskRepository.update(id, task)
     }
 
-    async delateTaskById(id: string): Promise<boolean> {
+    async delateTaskById(id: number): Promise<boolean> {
         return this.taskRepository.delete(id)
     }
 }

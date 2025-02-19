@@ -21,14 +21,18 @@ export class TaskRepository implements ITaskRepository {
     }
 
     async show(id: number): Promise<Task> {
-        this.task = await TaskEntity.findOneBy({id: parseInt(id)})
-        console.log(this.task)
-        //return this.task
+        this.task = await TaskEntity.findOneBy({id: id})
+        return this.task
     }
 
     async update(id: number, data: Task): Promise<Task | null> {
-        console.log(id)
-        console.log(data)
+         const task = await TaskEntity.findOneBy({id: id})
+        task.title = data.title
+        task.description = data.description
+        task.priority = data.priority
+        task.dueDate = data.dueDate
+        task.isCompleted = data.isCompleted
+        await task.save()
         return data
     }
 

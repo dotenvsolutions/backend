@@ -19,6 +19,6 @@ export interface ITaskService {
     createTask(task: Task): Promise<Task>
     getTask(): Promise<Task[]>
     findTaskById(id: number): Promise<Task>
-    updateTaskById(id: string, task:Partial<Task>): Promise<Task | null>
-    delateTaskById(id:string): Promise<boolean>
+    updateTaskById(id: number, task:Partial<Task>): Promise<Task | null>
+    delateTaskById(id:number): Promise<boolean>
 }

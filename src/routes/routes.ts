@@ -30,7 +30,7 @@ export default () => {
     router.put("/:id",async(req: Request, res: Response)  => {
         const  { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
-        const response = await taskService.updateTaskById(req.params.id, data)
+        const response = await taskService.updateTaskById(parseInt(req.params.id), data)
         res.json(response)
     })
     
