@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: mydatabase       # Nombre de la base de datos
+      POSTGRES_USER: myuser         # Usuario de la base de datos
+      POSTGRES_PASSWORD: mypassword # Contraseña del usuario
+    ports:
+      - "5430:5432"
+    restart: always                  # Reinicia el contenedor si se detiene
