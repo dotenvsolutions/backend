@@ -33,6 +33,15 @@ export default () => {
         const response = await taskService.updateTaskById(parseInt(req.params.id), data)
         res.json(response)
     })
+
+    router.delete("/:id",async(req: Request, res: Response)  => {
+        const response = await taskService.delateTaskById(parseInt(req.params.id))
+        if(response){
+            res.json({'msg':"Eliminado con exito"})
+        }else{
+            res.json({'msg': "No se ha podido eliminar"})
+        }
+    })
     
     return router;
 }
