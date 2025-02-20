@@ -1,5 +1,5 @@
 import express, {Application} from "express";
-import routes from "@routes/routes";
+import routes from "@routes/task.routes";
 import morgan from "morgan";
 import cors from 'cors'
 import helmet from "helmet";

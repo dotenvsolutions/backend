@@ -1,7 +1,7 @@
  
 import {Request, Response, NextFunction, Router} from 'express'
 import { TaskService } from '../servicies/TaskService';
-import { TaskRepository } from './../repositories/TaskRepository';
+import { TaskRepository } from '../repositories/TaskRepository';
 import { validateRequest } from '@middlewares/middleware';
 import {formSchema} from '@validations/task.validator'
 const taskRepository: TaskRepository = new TaskRepository()
