@@ -2,6 +2,8 @@
 import {Request, Response, NextFunction, Router} from 'express'
 import { TaskService } from '../servicies/TaskService';
 import { TaskRepository } from './../repositories/TaskRepository';
+import { validateRequest } from '@middlewares/middleware';
+import {formSchema} from '@validations/task.validator'
 const taskRepository: TaskRepository = new TaskRepository()
 const taskService: TaskService = new TaskService(taskRepository)
 
@@ -19,7 +21,7 @@ export default () => {
         res.json(response)
     }) 
 
-    router.post("/",async (req: Request, res: Response)  => {
+    router.post("/", async (req: Request, res: Response)  => {
         const { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
         const response = await taskService.createTask(data)
