@@ -1,5 +1,5 @@
 import express, {Application} from "express";
-import routes from "@routes/task.routes";
+import routes from "@routes/v1/task.routes";
 import morgan from "morgan";
 import cors from 'cors'
 import helmet from "helmet";
@@ -11,6 +11,6 @@ app.use(helmet())
 app.use(morgan("dev"));
 
 // Routes 
-app.use("/api/v1", routes())
+app.use("/api/v1/task", routes())
 
 export default app;

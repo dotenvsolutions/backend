@@ -1,7 +1,7 @@
  
 import {Request, Response, NextFunction, Router} from 'express'
-import { TaskService } from '../servicies/TaskService';
-import { TaskRepository } from '../repositories/TaskRepository';
+import { TaskService } from '../../servicies/TaskService';
+import { TaskRepository } from '../../repositories/TaskRepository';
 import { validateRequest } from '@middlewares/middleware';
 import {formSchema} from '@validations/task.validator'
 const taskRepository: TaskRepository = new TaskRepository()
@@ -16,26 +16,26 @@ export default () => {
         res.json("Api Works")
     })
 
-    router.get("/task", async(req: Request, res: Response)  =>  {
+    router.get("/", async(req: Request, res: Response)  =>  {
         const response = await taskService.getTask()
         res.json(response)
     }) 
 
-    router.post("/task/create", async (req: Request, res: Response)  => {
+    router.post("/create", async (req: Request, res: Response)  => {
         const { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
         const response = await taskService.createTask(data)
         res.json(response)
     } )
 
-    router.put("/task/upd/:id",async(req: Request, res: Response)  => {
+    router.put("/upd/:id",async(req: Request, res: Response)  => {
         const  { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
         const response = await taskService.updateTaskById(parseInt(req.params.id), data)
         res.json(response)
     })
 
-    router.delete("/task/del/:id",async(req: Request, res: Response)  => {
+    router.delete("/del/:id",async(req: Request, res: Response)  => {
         const response = await taskService.delateTaskById(parseInt(req.params.id))
         if(response){
             res.json({'msg':"Eliminado con exito"})
