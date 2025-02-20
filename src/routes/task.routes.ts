@@ -16,26 +16,26 @@ export default () => {
         res.json("Api Works")
     })
 
-    router.get("/", async(req: Request, res: Response)  =>  {
+    router.get("/task", async(req: Request, res: Response)  =>  {
         const response = await taskService.getTask()
         res.json(response)
     }) 
 
-    router.post("/", async (req: Request, res: Response)  => {
+    router.post("/task/create", async (req: Request, res: Response)  => {
         const { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
         const response = await taskService.createTask(data)
         res.json(response)
     } )
 
-    router.put("/:id",async(req: Request, res: Response)  => {
+    router.put("/task/upd/:id",async(req: Request, res: Response)  => {
         const  { title, description, priority, dueDate, isCompleted} = req.body
         const data = {title, description, priority, dueDate, isCompleted}
         const response = await taskService.updateTaskById(parseInt(req.params.id), data)
         res.json(response)
     })
 
-    router.delete("/:id",async(req: Request, res: Response)  => {
+    router.delete("/task/del/:id",async(req: Request, res: Response)  => {
         const response = await taskService.delateTaskById(parseInt(req.params.id))
         if(response){
             res.json({'msg':"Eliminado con exito"})
