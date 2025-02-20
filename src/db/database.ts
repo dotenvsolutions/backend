@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { Task } from "@entites/Task"
 import dotenv from 'dotenv'
@@ -16,3 +17,5 @@ export const AppDataSource = new DataSource({
     subscribers: [],
     migrations: [],
 })
+
+ 

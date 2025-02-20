@@ -1,6 +1,5 @@
  
 import {Request, Response, NextFunction, Router} from 'express'
-import taskController from '@controllers/task.controller';
 import { TaskService } from '../servicies/TaskService';
 import { TaskRepository } from './../repositories/TaskRepository';
 const taskRepository: TaskRepository = new TaskRepository()
