@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm";
-
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity , ManyToOne} from "typeorm";
+import { User } from "./User";
 @Entity()
  
 export class Task extends BaseEntity{
@@ -12,7 +12,7 @@ export class Task extends BaseEntity{
     @Column()
     description: string
 
-    @Column({ type: 'enum', enum: ['Alta', 'Media', 'Baja'] })
+    @Column({ type: 'enum', enum: ['Alta', 'Media', 'Baja'],default: "Alta" })
     priority: string
 
     @Column({ type: 'date' })
@@ -26,4 +26,7 @@ export class Task extends BaseEntity{
 
     @UpdateDateColumn()
     updateAt: Date
+
+    @ManyToOne(() => User, (user) => user.id)
+    user: User
 }
